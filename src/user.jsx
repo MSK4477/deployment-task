@@ -23,7 +23,7 @@ function User() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/user");
+        const response = await fetch("https://deploymenttask-node-js.onrender.com/api/user");
         if (!response.ok) {
           throw new Error("Failed to fetch user data");
         }
@@ -40,7 +40,7 @@ function User() {
   const sendReq = async (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:4000/api/user", {
+    fetch("https://deploymenttask-node-js.onrender.com/api/user", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {

@@ -1,14 +1,10 @@
-import { BrowserRouter as Router,  Routes } from "react-router-dom";
 import User from "./user";
 // import Edit from "../edit";
 const App = () => {
   return (
-    <Router>
+    // <Router>
       <User />
-      <Routes>
-        {/* <Route path="/edit" element={<Edit />} /> */}
-      </Routes>
-    </Router>
+   
   );
 };
 
