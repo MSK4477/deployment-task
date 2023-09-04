@@ -1,0 +1,36 @@
+.app-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  transition: ease-in-out 20s;
+  position: absolute;
+  right: 0;
+}
+
+.student-form,
+.mentor-form {
+  margin: 10px;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  border-style: none;
+  box-shadow: 5px 3px 3px 3px   rgb(130, 130, 130);
+}
+
+ .form-input {
+  margin-bottom: 30px;
+  display: block;
+} 
+
+.form-button {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
+.userDetails{
+  display: flex;
+ flex-wrap: wrap;
+}
+
