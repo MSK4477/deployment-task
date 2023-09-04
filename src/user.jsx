@@ -68,7 +68,10 @@ function User() {
           alignItems: "flex-end",
         }}
       >
-        <button onClick={isForm}>Add New User</button>
+        <button  style={{
+          backgroundColor:"black",
+          color: "white",
+        }}onClick={isForm}>Add New User</button>
       </div>
       {displayFrom && (
         <div className="app-container">
