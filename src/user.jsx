@@ -12,6 +12,9 @@ function User() {
   const isForm = () => {
     setDislayForm(!displayFrom);
   };
+  const closeForm = () =>{
+    setDislayForm(!displayFrom);
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -23,7 +26,9 @@ function User() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://deploymenttask-node-js.onrender.com/api/user");
+        const response = await fetch(
+          "https://deploymenttask-node-js.onrender.com/api/user"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch user data");
         }
@@ -39,14 +44,17 @@ function User() {
 
   const sendReq = async (e) => {
     e.preventDefault();
-
-    fetch("https://deploymenttask-node-js.onrender.com/api/user", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    if (formData.name == "" || formData.age == "" || formData.image == "") {
+      return alert("Please fill all required fields");
+    } else {
+      fetch("https://deploymenttask-node-js.onrender.com/api/user", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
     setDislayForm(!displayFrom);
     setFormData(initialState);
   };
@@ -65,10 +73,12 @@ function User() {
       {displayFrom && (
         <div className="app-container">
           <form onSubmit={sendReq} className="student-form">
+          <i className="fa-solid fa-xmark" onClick={closeForm}></i>
             <input
               type="text"
               name="name"
               placeholder="Enter the name"
+              required
               value={formData.name}
               onChange={handleChange}
               className="form-input"
@@ -77,6 +87,7 @@ function User() {
             <input
               type="text"
               name="age"
+              required
               placeholder="Enter the age"
               value={formData.age}
               onChange={handleChange}
@@ -85,11 +96,13 @@ function User() {
             <input
               type="text"
               name="image"
+              required
               placeholder="Enter the img url"
               value={formData.image}
               onChange={handleChange}
               className="form-input"
             />
+
             <button onClick={sendReq} className="form-button">
               Add New user
             </button>
