@@ -130,8 +130,8 @@ function User() {
               src={user.image}
               alt={user.id}
             />
-            <p style={{ textAlign: "center", color: "blue" }}>Name: {user.name}</p>
-            <p style={{ textAlign: "center", color: "blue" }}>Age: {user.age}</p>
+            <p style={{ textAlign: "center", color: "blue" }}><span style={{color:"black"}}>Name:</span> {user.name}</p>
+            <p style={{ textAlign: "center", color: "blue" }}><span style={{color:"black"}}>Age:</span>{user.age}</p>
           </div>
         ))}
       </div>
