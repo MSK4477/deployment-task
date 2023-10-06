@@ -1,13 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
+import axios from "axios";
 
 const initialState = { name: "", age: "", image: "" };
-
 function User() {
   const [formData, setFormData] = useState(initialState);
   const [userData, setUserData] = useState([]);
   const [displayFrom, setDislayForm] = useState(false);
+  const navigate = useNavigate();
 
   const isForm = () => {
     setDislayForm(!displayFrom);
@@ -40,7 +42,7 @@ function User() {
     };
 
     fetchData();
-  }, [userData]);
+  }, []);
 
   const sendReq = async (e) => {
     e.preventDefault();
@@ -58,6 +60,16 @@ function User() {
     setDislayForm(!displayFrom);
     setFormData(initialState);
   };
+  const deleteUser = async (id) => {
+  
+    await axios.get(`http://localhost:4000/api/user/delete/${id}`)
+  console.log(id)
+    const newData = [...userData]
+  newData.filter((user) => user.id !== id)
+setUserData(newData)
+console.log(userData)
+  }
+
 
   return (
     <>
@@ -66,10 +78,12 @@ function User() {
           display: "flex",
           justifyContent: "flex-end",
           alignItems: "flex-end",
+          margin:"0",
+          padding:"0",
         }}
       >
         <button  style={{
-          backgroundColor:"black",
+          backgroundColor:"#646cff",
           color: "white",
         }}onClick={isForm}>Add New User</button>
       </div>
@@ -105,15 +119,20 @@ function User() {
               onChange={handleChange}
               className="form-input"
             />
-
-            <button onClick={sendReq} className="form-button">
-              Add New user
-            </button>
+    
+<button style={{backgroundColor:"#646cff", color:"white", padding:"20px", display:"block", margin:"0 auto"}} onClick={sendReq}>Add New User</button>
           </form>
         </div>
       )}
+      <div >
+    
+      </div>
+
+
+
       <div className="userDetails">
         {userData.map((user) => (
+          
           <div
             style={{
               border: "2px solid #ccc",
@@ -121,17 +140,23 @@ function User() {
               padding: "20px",
               borderRadius: "10px",
               borderStyle: "none",
+              backgroundColor:"#75777d",
               boxShadow: "inset 0 0 5px rgba(0, 0, 0, 0.5)",
             }}
-            key={user.id}
-          >
+            key={user._id}
+          >  
+
+          <i className="fas fa-trash-alt" style={{color:"white", position:"relative", left:"160px"}} onClick={ () =>deleteUser(user.id)} ></i> <br />
+          <i className="fas fa-edit" onClick={() =>navigate(`/edit/${user.id}`)} style={{color:"white", position:"relative", top:"40px", left:"160px"}}></i>
+
             <img
-              style={{ width: "150px", height: "150", objectFit: "cover" }}
+              style={{ width: "150px", height: "150", objectFit: "fill" }}
               src={user.image}
               alt={user.id}
             />
-            <p style={{ textAlign: "center", color: "blue" }}>{user.name}</p>
-            <p style={{ textAlign: "center", color: "blue" }}>{user.age}</p>
+            <p style={{ textAlign: "center", color: "white" }}> {user.name}</p>
+            <p style={{ textAlign: "center", color: "white" }}>{user.age}</p>
+         
           </div>
         ))}
       </div>
