@@ -154,8 +154,8 @@ console.log(userData)
               src={user.image}
               alt={user.id}
             />
-            <p style={{ textAlign: "center", color: "white" }}> {user.name}</p>
-            <p style={{ textAlign: "center", color: "white" }}>{user.age}</p>
+            <p style={{ textAlign: "center", color: "white" }}>Name: {user.name}</p>
+            <p style={{ textAlign: "center", color: "white" }}>Age: {user.age}</p>
          
           </div>
         ))}
