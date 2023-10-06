@@ -10,7 +10,7 @@ function User() {
   const [userData, setUserData] = useState([]);
   const [displayFrom, setDislayForm] = useState(false);
   const navigate = useNavigate();
-
+console.log
   const isForm = () => {
     setDislayForm(!displayFrom);
   };
