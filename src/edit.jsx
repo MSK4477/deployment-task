@@ -9,7 +9,7 @@ const Edit = () => {
   const [formData, setFormData] = useState(initialState);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://deploymenttask-node-js.onrender.com/api/user"${id}`);
+      const response = await fetch(`https://deploymenttask-node-js.onrender.com/api/user/${id}`);
       if (!response) {
        console.log("Failed to fetch user data");
       }
