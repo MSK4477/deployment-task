@@ -89,8 +89,8 @@ console.log(userData)
       </div>
       {displayFrom && (
         <div className="app-container">
-          <form onSubmit={sendReq} className="student-form">
-          <i className="fa-solid fa-xmark" onClick={closeForm}></i>
+          <form onSubmit={sendReq} className="user-form">
+          <i className="fa-solid fa-xmark " title="Cancel" style={{position:"absolute", top:"0", right:"0", fontSize:"25px", padding:"20px"}} onClick={closeForm}></i>
             <input
               type="text"
               name="name"
@@ -146,16 +146,16 @@ console.log(userData)
             key={user._id}
           >  
 
-          <i className="fas fa-trash-alt" style={{color:"white", position:"relative", left:"160px"}} onClick={ () =>deleteUser(user.id)} ></i> <br />
-          <i className="fas fa-edit" onClick={() =>navigate(`/edit/${user.id}`)} style={{color:"white", position:"relative", top:"40px", left:"160px"}}></i>
+          <i className="fas fa-trash-alt" title="Delete" style={{color:"white", position:"relative", left:"160px"}} onClick={ () =>deleteUser(user.id)} ></i> <br />
+          <i className="fas fa-edit" title="Edit" onClick={() =>navigate(`/edit/${user.id}`)} style={{color:"white", position:"relative", top:"40px", left:"160px"}}></i>
 
             <img
               style={{ width: "150px", height: "150", objectFit: "fill" }}
               src={user.image}
               alt={user.id}
             />
-            <p style={{ textAlign: "center", color: "white" }}>Name: {user.name}</p>
-            <p style={{ textAlign: "center", color: "white" }}>Age: {user.age}</p>
+            <p style={{ textAlign: "center", color: "white" }}><span style={{color:"black"}}>Name:</span>  {user.name}</p>
+            <p style={{ textAlign: "center", color: "white" }}><span style={{color:"black"}}>Age:</span> {user.age}</p>
          
           </div>
         ))}

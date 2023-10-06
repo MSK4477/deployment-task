@@ -52,7 +52,7 @@ console.log(formData)
   return (
     <>
       <div className="app-container">
-        <form onSubmit={sendReq} className="student-form">
+        <form onSubmit={sendReq} className="user-form">
           <input
             type="text"
             name="name"
@@ -78,9 +78,11 @@ console.log(formData)
             onChange={handleChange}
             className="form-input"
           />
-          <button onClick={sendReq} className="form-button">
+          <button style={{backgroundColor:"#646cff", color:"white", padding:"20px", display:"block", margin:"0 auto"}} onClick={sendReq} >
+          
             Update User
           </button>
+
         </form>
       </div>
     </>
