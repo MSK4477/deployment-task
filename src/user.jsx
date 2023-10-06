@@ -42,7 +42,7 @@ console.log
     };
 
     fetchData();
-  }, []);
+  }, [userData]);
 
   const sendReq = async (e) => {
     e.preventDefault();

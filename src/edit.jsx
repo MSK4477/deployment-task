@@ -9,9 +9,9 @@ const Edit = () => {
   const [formData, setFormData] = useState(initialState);
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/user/${id}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch user data");
+      const response = await fetch(`https://deploymenttask-node-js.onrender.com/api/user"${id}`);
+      if (!response) {
+       console.log("Failed to fetch user data");
       }
       const data = await response.json();
       setFormData(data.userData); 
@@ -39,7 +39,7 @@ console.log(formData)
     e.preventDefault();
 
     try {
-      const response = await axios.patch(`http://localhost:4000/api/user/edit/${id}`, formData,)
+      const response = await axios.patch(`https://deploymenttask-node-js.onrender.com/api/user/edit/${id}`, formData,)
      
      if(response.data.message === "User data updated successfully"){
         navigate("/"); 
