@@ -62,7 +62,7 @@ console.log
   };
   const deleteUser = async (id) => {
   
-    await axios.get(`http://localhost:4000/api/user/delete/${id}`)
+    await axios.get(`https://deploymenttask-node-js.onrender.com/api/user/delete/${id}`)
   console.log(id)
     const newData = [...userData]
   newData.filter((user) => user.id !== id)
