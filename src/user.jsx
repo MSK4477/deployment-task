@@ -10,13 +10,13 @@ function User() {
   const [userData, setUserData] = useState([]);
   const [displayFrom, setDislayForm] = useState(false);
   const navigate = useNavigate();
-console.log
+  console.log;
   const isForm = () => {
     setDislayForm(!displayFrom);
   };
-  const closeForm = () =>{
+  const closeForm = () => {
     setDislayForm(!displayFrom);
-  }
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -61,15 +61,15 @@ console.log
     setFormData(initialState);
   };
   const deleteUser = async (id) => {
-  
-    await axios.get(`https://deploymenttask-node-js.onrender.com/api/user/delete/${id}`)
-  console.log(id)
-    const newData = [...userData]
-  newData.filter((user) => user.id !== id)
-setUserData(newData)
-console.log(userData)
-  }
-
+    await axios.get(
+      `https://deploymenttask-node-js.onrender.com/api/user/delete/${id}`
+    );
+    console.log(id);
+    const newData = [...userData];
+    newData.filter((user) => user.id !== id);
+    setUserData(newData);
+    console.log(userData);
+  };
 
   return (
     <>
@@ -78,19 +78,35 @@ console.log(userData)
           display: "flex",
           justifyContent: "flex-end",
           alignItems: "flex-end",
-          margin:"0",
-          padding:"0",
+          margin: "0",
+          padding: "0",
         }}
       >
-        <button  style={{
-          backgroundColor:"#646cff",
-          color: "white",
-        }}onClick={isForm}>Add New User</button>
+        <button
+          style={{
+            backgroundColor: "#646cff",
+            color: "white",
+          }}
+          onClick={isForm}
+        >
+          Add New User
+        </button>
       </div>
       {displayFrom && (
         <div className="app-container">
           <form onSubmit={sendReq} className="user-form">
-          <i className="fa-solid fa-xmark " title="Cancel" style={{position:"absolute", top:"0", right:"0", fontSize:"25px", padding:"20px"}} onClick={closeForm}></i>
+            <i
+              className="fa-solid fa-xmark "
+              title="Cancel"
+              style={{
+                position: "absolute",
+                top: "0",
+                right: "0",
+                fontSize: "25px",
+                padding: "20px",
+              }}
+              onClick={closeForm}
+            ></i>
             <input
               type="text"
               name="name"
@@ -119,20 +135,26 @@ console.log(userData)
               onChange={handleChange}
               className="form-input"
             />
-    
-<button style={{backgroundColor:"#646cff", color:"white", padding:"20px", display:"block", margin:"0 auto"}} onClick={sendReq}>Add New User</button>
+
+            <button
+              style={{
+                backgroundColor: "#646cff",
+                color: "white",
+                padding: "20px",
+                display: "block",
+                margin: "0 auto",
+              }}
+              onClick={sendReq}
+            >
+              Add New User
+            </button>
           </form>
         </div>
       )}
-      <div >
-    
-      </div>
-
-
+      <div></div>
 
       <div className="userDetails">
         {userData.map((user) => (
-          
           <div
             style={{
               border: "2px solid #ccc",
@@ -140,23 +162,40 @@ console.log(userData)
               padding: "20px",
               borderRadius: "10px",
               borderStyle: "none",
-              backgroundColor:"#75777d",
+              backgroundColor: "#75777d",
               boxShadow: "inset 0 0 5px rgba(0, 0, 0, 0.5)",
             }}
             key={user._id}
-          >  
-
-          <i className="fas fa-trash-alt" title="Delete" style={{color:"white", position:"relative", left:"160px"}} onClick={ () =>deleteUser(user.id)} ></i> <br />
-          <i className="fas fa-edit" title="Edit" onClick={() =>navigate(`/edit/${user.id}`)} style={{color:"white", position:"relative", top:"40px", left:"160px"}}></i>
-
+          >
+            <i
+              className="fas fa-trash-alt"
+              title="Delete"
+              style={{ color: "white", position: "relative", left: "160px" }}
+              onClick={() => deleteUser(user.id)}
+            ></i>{" "}
+            <br />
+            <i
+              className="fas fa-edit"
+              title="Edit"
+              onClick={() => navigate(`/edit/${user.id}`)}
+              style={{
+                color: "white",
+                position: "relative",
+                top: "40px",
+                left: "160px",
+              }}
+            ></i>
             <img
               style={{ width: "150px", height: "150", objectFit: "fill" }}
               src={user.image}
               alt={user.id}
             />
-            <p style={{ textAlign: "center", color: "white" }}><span style={{color:"black"}}>Name:</span>  {user.name}</p>
-            <p style={{ textAlign: "center", color: "white" }}><span style={{color:"black"}}>Age:</span> {user.age}</p>
-         
+            <p style={{ textAlign: "center", color: "white" }}>
+              <span style={{ color: "black" }}>Name:</span> {user.name}
+            </p>
+            <p style={{ textAlign: "center", color: "white" }}>
+              <span style={{ color: "black" }}>Age:</span> {user.age}
+            </p>
           </div>
         ))}
       </div>
